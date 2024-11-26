@@ -31,4 +31,4 @@
 ![alt text](image-7.png)
 
 ## Итог
-[Финальный код (ссылка на репозиторий)](https://github.com/gaidarvu/ter-homeworks/tree/terraform-05/04/src)
+[Финальный код (ссылка на репозиторий)](https://github.com/gaidarvu/ansible-netology/tree/main/hw-ansible-01)
