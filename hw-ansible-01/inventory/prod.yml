@@ -1,11 +1,11 @@
 ---
   el:
     hosts:
-      centos7:
-        ansible_host: 62.84.116.215
-        # ansible_python_interpreter: /usr/bin/python3
+      docker-env-for-ansible-centos7-1:
+        ansible_connection: docker
+        # ansible_host: 62.84.116.215
   deb:
     hosts:
-      ubuntu:
-        ansible_host: 62.84.113.17
-        ansible_python_interpreter: /usr/bin/python3.12
+      docker-env-for-ansible-ubuntu-1:
+        ansible_connection: docker
+        # ansible_host: 62.84.113.17

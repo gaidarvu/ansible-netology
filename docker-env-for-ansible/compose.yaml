@@ -1,0 +1,29 @@
+# version: '3.8'
+
+x-restat: &restart
+  restart: always
+
+services:
+  centos7:
+    image: centos/python-38-centos7:20210726-fad62e9
+    command: tail -f /dev/null
+    # command: /bin/sh -c "yum install-y epel-release && yum install-y python3"
+    <<: [*restart]
+    networks:
+      backend:
+        ipv4_address: 172.20.0.5
+
+  ubuntu:
+    image: ubuntu:latest
+    command: /bin/bash -c "apt -y update && apt install -y python3 && tail -f /dev/null"
+    <<: [*restart]
+    networks:
+      backend:
+        ipv4_address: 172.20.0.10
+    
+networks:
+  backend:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.20.0.0/24
