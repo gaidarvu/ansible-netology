@@ -35,32 +35,66 @@
       failed_when: create_db.rc != 0 and create_db.rc !=82
       changed_when: create_db.rc == 0
 
+- name: Install Vector
+  become: true
+  hosts: vector
+  handlers:
+    - name: Start vector service
+      become: true
+      systemd:
+        name: vector
+        state: restarted
+        enabled: yes
+
+  tasks:
+    - name: Make dirs
+      file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - "/home/gaidar/vector"
+        - "{{ VECTOR_CONFIG }}"
+        - "{{ VECTOR_DATA_DIR }}"
+
+    - name: Get vector tar.gz
+      get_url:
+        url: "https://packages.timber.io/vector/0.42.0/vector-0.42.0-x86_64-unknown-linux-musl.tar.gz"
+        dest: "/home/gaidar/"
+
+    - name: Extract vector tar.gz
+      unarchive:
+        src: "/home/gaidar/vector-0.42.0-x86_64-unknown-linux-musl.tar.gz"
+        dest: "/home/gaidar/vector" 
+        remote_src: yes
+
+    - name: Copy vector bin
+      copy:
+        src: /home/gaidar/vector/vector-x86_64-unknown-linux-musl/bin/vector
+        dest: /usr/bin/
+        mode: '0755'
+        remote_src: yes
     
+    - name: Copy cfg file
+      template:
+        src: ./template/vector.yaml.j2
+        dest: "{{ VECTOR_CONFIG }}/vector.yaml"
 
+    - name: Copy service file
+      template:
+        src: ./template/vector.service.j2
+        dest: /etc/systemd/system/vector.service
 
-
-mkdir -p vector
-wget https://packages.timber.io/vector/0.42.0/vector-0.42.0-x86_64-unknown-linux-musl.tar.gz
-tar xzf - -C vector --strip-components=2
-cp bin/vector /usr/bin/
-mkdir -p /etc/vector
-cp config/vector.yaml /etc/vector/
-cp etc/systemd/vector.service /etc/systemd/system/
-sudo systemctl daemon-reload
-sudo systemctl restart vector
-
-User=vector
-Group=vector
-ExecStart=/usr/bin/vector --config /etc/vector/vector.yaml
-
-
-
-
-    # - name: Get Vector
-    #   get_url:
-    #     url: https://raw.githubusercontent.com/vectordotdev/vector/master/distribution/install.sh
-    #     dest: /tmp/install.sh
-    #     mode: 0755
+    - name: Reload systemd daemon
+      systemd:
+        daemon_reload: yes
     
-    # - name: Setup Vector
-    #   command: /tmp/install.sh
+    - name: Delete temp files
+      file:
+        path: "{{ item }}"
+        state: absent      
+      with_items:
+        - "/home/gaidar/vector"
+        - "/home/gaidar/vector-0.42.0-x86_64-unknown-linux-musl.tar.gz"
+      notify: Start vector service
+    - name: Flush handlers
+      meta: flush_handlers
