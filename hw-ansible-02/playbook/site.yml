@@ -83,10 +83,13 @@
       template:
         src: ./template/vector.service.j2
         dest: /etc/systemd/system/vector.service
+      notify: Start vector service
+    - name: Flush handlers
+      meta: flush_handlers
 
-    - name: Reload systemd daemon
-      systemd:
-        daemon_reload: yes
+    # - name: Reload systemd daemon
+    #   systemd:
+    #     daemon_reload: yes
     
     - name: Delete temp files
       file:
@@ -95,6 +98,3 @@
       with_items:
         - "/home/gaidar/vector"
         - "/home/gaidar/vector-0.42.0-x86_64-unknown-linux-musl.tar.gz"
-      notify: Start vector service
-    - name: Flush handlers
-      meta: flush_handlers
