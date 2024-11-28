@@ -42,6 +42,18 @@ variable "each_vm" {
       scheduling_policy=true
       os_family="fd86t5b1o1dujno51lmc"
     }
+    "centos7_2" = {
+      platform_id="standard-v2"
+      vm_name="centos7-2"
+      cpu=2
+      ram=1
+      core_fraction=5
+      type="network-hdd"
+      disk_volume=10
+      network_interface=true
+      scheduling_policy=true
+      os_family="fd86t5b1o1dujno51lmc"
+    }
     # "fedora" = {
     #   platform_id="standard-v2"
     #   vm_name="fedora"
