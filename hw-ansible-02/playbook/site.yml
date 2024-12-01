@@ -114,3 +114,48 @@
       meta: flush_handlers
       tags:
         - vector
+
+- name: Install LightHouse
+  become: true
+  hosts: lighthouse
+
+  tasks:
+    - name: Clone Repo
+      git:
+        repo: "https://github.com/VKCOM/lighthouse"
+        dest: "/usr/share/"
+        version: "master"
+      tags:
+        - lighthouse
+
+sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
+
+  
+#Теперь нужно импортировать официальный ключ, используемый apt для проверки подлинности пакетов. Скачайте ключ:
+
+curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
+#Проверьте, верный ли ключ был загружен:
+
+gpg --dry-run --quiet --no-keyring --import --import-options import-show /usr/share/keyrings/nginx-archive-keyring.gpg
+
+# Вывод команды должен содержать полный отпечаток ключа 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62:
+
+# pub   rsa2048 2011-08-19 [SC] [expires: 2027-05-24]
+#       573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
+# uid                      nginx signing key <signing-key@nginx.com>
+
+
+Вывод команды может содержать и другие ключи, используемые для подписи пакетов.
+
+#Для подключения apt-репозитория для стабильной версии nginx, выполните следующую команду:
+
+echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" | sudo tee /etc/apt/sources.list.d/nginx.list
+
+#Для использования пакетов из нашего репозитория вместо распространяемых в дистрибутиве, настройте закрепление:
+
+echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority: 900\n" | sudo tee /etc/apt/preferences.d/99nginx
+
+#Чтобы установить nginx, выполните следующие команды:
+
+sudo apt update
+sudo apt install nginx

@@ -1,4 +1,7 @@
 ---
+all:
+  vars:
+    remote_user: gaidar
 clickhouse:
   hosts:
     clickhouse-01:
@@ -6,4 +9,8 @@ clickhouse:
 vector:
   hosts:
     vector-01:
+      ansible_host: 89.169.152.76
+lighthouse:
+  hosts:
+    lighthouse-01:
       ansible_host: 89.169.152.76
