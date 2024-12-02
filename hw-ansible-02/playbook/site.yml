@@ -115,18 +115,15 @@
       tags:
         - vector
 
-- name: Install LightHouse
+- name: Install nginx
   become: true
   hosts: lighthouse
-
-  tasks:
-    - name: Clone Repo
-      git:
-        repo: "https://github.com/VKCOM/lighthouse"
-        dest: "/usr/share/lighthouse"
-        version: "master"
-      tags:
-        - lighthouse
+  handlers:
+    - name: Start nginx service
+      systemd:
+        name: nginx
+        state: started
+        enabled: true
 
     - name: Install depend packages
       apt:
@@ -158,14 +155,25 @@
       apt:
         name: nginx
         state: present
-        update_cache: yes
+        update_cache: true
+      notify: Start nginx service
       tags:
         - nginx
-    
-    - name: enable and start nginx
+
+- name: Install LightHouse
+  become: true
+  hosts: lighthouse
+  handlers:
+    - name: Restart nginx service
       systemd:
         name: nginx
         state: started
-        enabled: yes
+
+  tasks:
+    - name: Clone Repo
+      git:
+        repo: "https://github.com/VKCOM/lighthouse"
+        dest: "/usr/share/lighthouse"
+        version: "master"
       tags:
-        - nginx
+        - lighthouse
