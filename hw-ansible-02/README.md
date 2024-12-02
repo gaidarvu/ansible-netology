@@ -56,4 +56,4 @@ Vector-0.42.0 на данный момент последняя версия п�
 ![alt text](image-11.png)
 
 ## Итог
-[Финальный код (ссылка на репозиторий)](https://github.com/gaidarvu/ansible-netology/tree/08-ansible-02-playbook/hw-ansible-02/playbook)
+[Финальный код (ссылка на репозиторий)](https://github.com/gaidarvu/ansible-netology/tree/08-ansible-03-yandex/hw-ansible-02/playbook)
