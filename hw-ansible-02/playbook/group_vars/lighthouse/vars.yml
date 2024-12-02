@@ -1,0 +1,3 @@
+---
+root_dir: /usr/share/lighthouse
+nginx_user: nginx
