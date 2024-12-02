@@ -159,7 +159,7 @@
         update_cache: true
       tags:
         - nginx
-        
+
     - name: Copy *.conf file for nginx
       template:
         src: ./template/nginx.conf.j2
@@ -184,7 +184,7 @@
         version: "master"
       tags:
         - lighthouse
-        
+
     - name: Copy *.conf file for nginx
       template:
         src: ./template/default.conf.j2
