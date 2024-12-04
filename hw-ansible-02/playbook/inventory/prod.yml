@@ -1,9 +1,17 @@
 ---
+all:
+  vars:
+    remote_user: gaidar
+    ansible_ssh_extra_args: '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 clickhouse:
   hosts:
     clickhouse-01:
-      ansible_host: 89.169.137.45
+      ansible_host: 89.169.129.69
 vector:
   hosts:
     vector-01:
-      ansible_host: 89.169.152.76
+      ansible_host: 89.169.136.224
+lighthouse:
+  hosts:
+    lighthouse-01:
+      ansible_host: 89.169.150.24

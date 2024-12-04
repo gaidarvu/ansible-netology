@@ -66,17 +66,17 @@ variable "each_vm" {
     #   scheduling_policy=true
     #   os_family="fd89sn80q3auso2rionh"
     # }
-    # "ubuntu" = {
-    #   platform_id="standard-v2"
-    #   vm_name="ubuntu-2004-lts"
-    #   cpu=2
-    #   ram=1
-    #   core_fraction=5
-    #   type="network-hdd"
-    #   disk_volume=10
-    #   network_interface=true
-    #   scheduling_policy=true
-    #   os_family="fd8chrq89mmk8tqm85r8" 
-    # }
+    "ubuntu" = {
+      platform_id="standard-v2"
+      vm_name="ubuntu-2004-lts"
+      cpu=2
+      ram=1
+      core_fraction=5
+      type="network-hdd"
+      disk_volume=10
+      network_interface=true
+      scheduling_policy=true
+      os_family="fd8chrq89mmk8tqm85r8" 
+    }
   }
 }
