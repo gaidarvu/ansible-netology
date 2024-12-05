@@ -18,10 +18,16 @@
     - nginx
     - lighthouse
 ```
+Playbook является идемпотентным
+
+![alt text](image.png)
 
 ## Итог
 
 [Репозиторий Vector](https://github.com/gaidarvu/vector-role/tree/v1.1.0)
+
 [Репозиторий LightHouse](https://github.com/gaidarvu/lighthouse-role/tree/v1.2.1)
+
 [Репозиторий Nginx](https://github.com/gaidarvu/nginx-role/tree/v1.1.0)
+
 [Финальный код (ссылка на репозиторий)](https://github.com/gaidarvu/ansible-netology/tree/hw-ansible-04/hw-ansible-02/playbook)
