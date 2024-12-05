@@ -1,4 +1,4 @@
-clickhouse
+lighthouse
 =========
 
 This role installs Vector on Ubuntu Server 20.04

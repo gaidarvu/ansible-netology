@@ -1,5 +1,0 @@
----
-VECTOR_CONFIG: "/etc/vector"
-VECTOR_DATA_DIR: "/var/lib/vector"
-VECTOR_USER: "root"
-VECTOR_GROUP: "root"

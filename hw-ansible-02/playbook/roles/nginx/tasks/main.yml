@@ -35,7 +35,7 @@
 
 - name: Copy *.conf file for nginx
   template:
-    src: ./template/nginx.conf.j2
+    src: "{{ role_path }}/templates/nginx.conf.j2"
     dest: "/etc/nginx/nginx.conf"
     mode: '0644'
   notify: Start nginx service

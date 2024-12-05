@@ -37,7 +37,7 @@
 
 - name: Copy *.yaml file
   ansible.builtin.template:
-    src: ./template/vector.yaml.j2
+    src: "{{ role_path }}/templates/vector.yaml.j2"
     dest: "{{ VECTOR_CONFIG }}/vector.yaml"
     mode: '0755'
   tags:
@@ -45,7 +45,7 @@
 
 - name: Copy *.service file
   ansible.builtin.template:
-    src: ./template/vector.service.j2
+    src: "{{ role_path }}/templates/vector.service.j2"
     dest: /etc/systemd/system/vector.service
     mode: '0664'
   notify: Start vector service

@@ -11,12 +11,6 @@
   roles:
     - vector
 
-# - name: Install nginx
-#   become: true
-#   hosts: lighthouse
-#   roles:
-#     - nginx
-
 - name: Install LightHouse
   become: true
   hosts: lighthouse
