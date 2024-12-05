@@ -11,7 +11,7 @@
 
   - src: git@github.com:gaidarvu/lighthouse-role.git
     scm: git
-    version: "v1.1.0"
+    version: "v1.1.3"
     name: lighthouse
     
   - src: git@github.com:gaidarvu/nginx-role.git

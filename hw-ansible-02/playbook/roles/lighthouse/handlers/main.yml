@@ -1,3 +1,6 @@
 ---
 - name: Restart nginx service
-  command: "nginx -s reload"
+  systemd:
+    name: nginx
+    state: started
+    enabled: true
