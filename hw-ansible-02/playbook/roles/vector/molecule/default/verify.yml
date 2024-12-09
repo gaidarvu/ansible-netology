@@ -1,0 +1,15 @@
+- name: Verify
+  hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+      
+  - name: Ensure the configuration file is valid
+    command: vector validate /etc/vector/vector.yaml
+    register: config_check
+    ignore_errors: true
+
+  - name: Assert that the configuration is valid
+    assert:
+      that:
+        - config_check.rc == 0

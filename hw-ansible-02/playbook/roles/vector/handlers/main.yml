@@ -1,7 +1,5 @@
 ---
 - name: Start vector service
-  become: true
-  systemd:
-    name: vector
-    state: restarted
-    enabled: true
+  command: vector --config /etc/vector/vector.yaml
+  async: 3
+  poll: 0
