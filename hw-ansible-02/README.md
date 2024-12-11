@@ -1,26 +1,40 @@
 
-# Домашнее задание к занятию 4 «Работа с roles»
+# Домашнее задание к занятию 5 «Тестирование roles»
 
-## Описание
-Данный playbook выполняет развертывание в Yandex Cloud:
+## Molecule
 
-При помощи ansible-galaxy вытягиваем роли с нужными версиями из гита, указанные в requirements.yml
+При запуске molecule test -s ubuntu_xenial для clickhouse видим следующие результаты:
 
-Поскольку для раскатки LightHouse необходим nginx, вытянул его роль из гита таким-же образом, как и все остальные роли и включил в LightHouse как include_role
+![alt text](image-7.png)
 
-Можно было сделать и таким образом:
+При запуске molecule test для Vector видим следующие результаты:
 
-```yaml
-- name: Install LightHouse
-  become: true
-  hosts: lighthouse
-  roles:
-    - nginx
-    - lighthouse
-```
-Playbook является идемпотентным
+Роль Destroy
 
-![alt text](image.png)
+![alt text](image-1.png)
+
+Создание тестовой среды
+
+![alt text](image-2.png)
+
+Развертывание роли в тестовую среду
+
+![alt text](image-3.png)
+
+Тест на идемпотентность
+
+![alt text](image-4.png)
+
+Тест verify
+
+![alt text](image-5.png)
+
+Очистка тестовой среды
+
+![alt text](image-6.png)
+
+
+
 
 ## Итог
 
