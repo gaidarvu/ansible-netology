@@ -34,14 +34,31 @@
 ![alt text](image-6.png)
 
 
+## Tox
 
+Запуск tox происходит по сценарию: destroy --> create --> converge --> destroy
+Тестовая среда driver: podman, image: python:latest
+
+Запуск tox, роль destroy
+
+![alt text](image-8.png)
+
+Роль create
+
+![alt text](image-9.png)
+
+Роль converge
+
+![alt text](image-10.png)
+
+Роль destroy + info
+
+![alt text](image-11.png)
 
 ## Итог
 
-[Репозиторий Vector](https://github.com/gaidarvu/vector-role/tree/v1.1.0)
+[Репозиторий с тегом Molecule](https://github.com/gaidarvu/ansible-netology/tree/v1.0.0)
 
-[Репозиторий LightHouse](https://github.com/gaidarvu/lighthouse-role/tree/v1.2.1)
+[Репозиторий с тегом Tox](https://github.com/gaidarvu/ansible-netology/tree/tox1.0.1)
 
-[Репозиторий Nginx](https://github.com/gaidarvu/nginx-role/tree/v1.1.0)
-
-[Финальный код (ссылка на репозиторий)](https://github.com/gaidarvu/ansible-netology/tree/hw-ansible-04/hw-ansible-02/playbook)
+[Финальный код (ссылка на репозиторий)](https://github.com/gaidarvu/ansible-netology/tree/hw-ansible-05)
