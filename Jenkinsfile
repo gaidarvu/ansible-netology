@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Choose Dir') {
             steps {
-                dir('hw-ansible-02/playbook/roles/vector')
+                sh 'cd hw-ansible-02/playbook/roles/vector'
             }
         }
         stage('Run Molecule Test') {
