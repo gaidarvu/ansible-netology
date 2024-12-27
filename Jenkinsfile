@@ -18,4 +18,4 @@ pipeline {
             echo 'Pipeline Ended'
         }
     }
-}s
+}
