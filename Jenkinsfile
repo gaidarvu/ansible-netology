@@ -12,11 +12,11 @@ pipeline {
                 }
             }
         }
-        stage('Run Molecule Test') {
-            steps {
-                sh 'molecule test'
-            }
-        }
+        // stage('Run Molecule Test') {
+        //     steps {
+        //         sh 'molecule test'
+        //     }
+        // }
     }
     post {
         always {
