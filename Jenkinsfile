@@ -12,15 +12,10 @@ pipeline {
                 }
             }
         }
-        // stage('Run Molecule Test') {
-        //     steps {
-        //         sh 'molecule test'
-        //     }
-        // }
     }
     post {
         always {
             echo 'Pipeline Ended'
         }
     }
-}
+}s
