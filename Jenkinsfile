@@ -3,11 +3,12 @@ pipeline {
         label 'ansible'
     }
     stages {
-        stage('Choose Dir'){
+        stage('Run Molecule Test'){
             steps {
                 dir('hw-ansible-02/playbook/roles/vector') {
                     sh 'echo "We are in hw-ansible-02/playbook/roles/vector"'
                     sh 'ls -la'
+                    sh 'molecule test'
                 }
             }
         }
